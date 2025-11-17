@@ -501,13 +501,14 @@
         <p class="text-sm font-semibold text-gray-700 mb-2">Susunan kolum yang diperlukan:</p>
         <div class="space-y-1 text-xs text-gray-600">
          <p><strong>A:</strong> Masjid</p>
-         <p><strong>B:</strong> Jawatan</p>
-         <p><strong>C:</strong> Nama</p>
-         <p><strong>D:</strong> No. KP</p>
-         <p><strong>E:</strong> No. Telefon</p>
-         <p><strong>F:</strong> Alamat</p>
-         <p><strong>G:</strong> Pekerjaan</p>
-         <p><strong>H:</strong> Umur (optional)</p>
+         <p><strong>B:</strong> (Kosong)</p>
+         <p><strong>C:</strong> Jawatan</p>
+         <p><strong>D:</strong> Nama</p>
+         <p><strong>E:</strong> No. KP</p>
+         <p><strong>F:</strong> No. Telefon</p>
+         <p><strong>G:</strong> Alamat</p>
+         <p><strong>H:</strong> Pekerjaan</p>
+         <p><strong>I:</strong> Umur (optional)</p>
         </div>
        </div>
        <div class="bg-blue-50 rounded-2xl p-4">
@@ -546,7 +547,7 @@
        </div> Cari Nama / No. KP </label> <input type="text" id="searchInput" placeholder="Masukkan nama atau no. KP untuk carian..." class="w-full px-5 py-4 rounded-2xl modern-input font-medium text-gray-700 focus:outline-none">
      </div>
     </div>
-    <div class="flex gap-4 flex-wrap justify-center"><button id="searchBtn" class="btn-modern btn-primary text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3"> <span class="loading-spinner hidden text-xl">⟳</span> <span class="relative z-10">🔍 Cari Maklumat</span> </button> <button id="clearBtn" class="btn-modern btn-secondary text-white px-8 py-4 rounded-2xl font-bold"> <span class="relative z-10">🗑️ Kosongkan</span> </button> <button id="browserPrintBtn" class="btn-modern btn-success text-white px-8 py-4 rounded-2xl font-bold"> <span class="relative z-10">🖨️ Cetak</span> </button> <button id="refreshDataBtn" class="btn-modern btn-accent text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3"> <span class="loading-spinner hidden text-xl">⟳</span> <span class="relative z-10">🔄 Muat Semula</span> </button> <button id="showGuideBtn" class="btn-modern bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 shadow-lg hover:shadow-xl"> <span class="relative z-10">📋 Panduan Setup</span> </button> <a href="https://padspt.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-modern btn-home text-gray-700 px-8 py-4 rounded-2xl font-bold inline-flex items-center gap-3 no-underline"> <span class="relative z-10">🏠 Halaman Utama</span> </a>
+    <div class="flex gap-4 flex-wrap justify-center"><button id="searchBtn" class="btn-modern btn-primary text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3"> <span class="loading-spinner hidden text-xl">⟳</span> <span class="relative z-10">🔍 Cari Maklumat</span> </button> <button id="clearBtn" class="btn-modern btn-secondary text-white px-8 py-4 rounded-2xl font-bold"> <span class="relative z-10">🗑️ Kosongkan</span> </button> <button id="browserPrintBtn" class="btn-modern btn-success text-white px-8 py-4 rounded-2xl font-bold"> <span class="relative z-10">🖨️ Cetak</span> </button> <button id="refreshDataBtn" class="btn-modern btn-accent text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3"> <span class="loading-spinner hidden text-xl">⟳</span> <span class="relative z-10">🔄 Muat Semula</span> </button> <a href="https://padspt.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-modern btn-home text-gray-700 px-8 py-4 rounded-2xl font-bold inline-flex items-center gap-3 no-underline"> <span class="relative z-10">🏠 Halaman Utama</span> </a>
     </div>
    </div><!-- Results Section -->
    <div id="resultsSection" class="hidden">
@@ -747,18 +748,18 @@
                         const row = {};
                         
                         // Map CSV columns to our data structure
-                        // Flexible mapping - handle different column orders
-                        row.masjid = (values[0] || '').trim().replace(/"/g, '');
-                        row.jawatan = (values[1] || '').trim().replace(/"/g, '');
-                        row.nama = (values[2] || '').trim().replace(/"/g, '');
-                        row.kp = (values[3] || '').trim().replace(/"/g, '');
-                        row.noTel = (values[4] || '').trim().replace(/"/g, '');
-                        row.alamat = (values[5] || '').trim().replace(/"/g, '');
-                        row.pekerjaan = (values[6] || '').trim().replace(/"/g, '');
+                        // Updated mapping based on Google Sheets structure
+                        row.masjid = (values[0] || '').trim().replace(/"/g, '');    // Kolum A
+                        row.nama = (values[3] || '').trim().replace(/"/g, '');      // Kolum D
+                        row.jawatan = (values[2] || '').trim().replace(/"/g, '');   // Kolum C
+                        row.kp = (values[4] || '').trim().replace(/"/g, '');       // Kolum E
+                        row.noTel = (values[5] || '').trim().replace(/"/g, '');    // Kolum F
+                        row.alamat = (values[6] || '').trim().replace(/"/g, '');   // Kolum G
+                        row.pekerjaan = (values[7] || '').trim().replace(/"/g, ''); // Kolum H
                         
                         // Calculate age from IC number, fallback to CSV umur column
                         const calculatedAge = calculateAgeFromIC(row.kp);
-                        row.umur = calculatedAge || (values[7] || '').trim().replace(/"/g, '') || '';
+                        row.umur = calculatedAge || (values[8] || '').trim().replace(/"/g, '') || ''; // Kolum I
                         
                         // Only add row if it has essential data
                         if (row.nama && row.nama !== '') {
@@ -810,8 +811,8 @@
             jawatankuasaData = [
                 {
                     masjid: 'Masjid Al-Hidayah',
-                    jawatan: 'Pengerusi',
                     nama: 'Ahmad bin Ali',
+                    jawatan: 'Pengerusi',
                     kp: '801201-02-1234',
                     noTel: '012-3456789',
                     alamat: 'No. 123, Jalan Makmur, Taman Sejahtera, 13700 Perai',
@@ -1031,7 +1032,7 @@
         document.getElementById('clearBtn').addEventListener('click', clearSearch);
         document.getElementById('browserPrintBtn').addEventListener('click', printWithBrowserPrint);
         document.getElementById('refreshDataBtn').addEventListener('click', refreshData);
-        document.getElementById('showGuideBtn').addEventListener('click', showSetupGuide);
+
         document.getElementById('hideGuideBtn').addEventListener('click', hideSetupGuide);
 
         // Enter key search
@@ -1359,5 +1360,5 @@
             }
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99fc1e0137c25e23',t:'MTc2MzM0OTg4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99fc4d2084f12441',t:'MTc2MzM1MTgxOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
