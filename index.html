@@ -439,6 +439,91 @@
       </div>
      </div>
     </div>
+   </div><!-- Connection Status -->
+   <div id="connectionStatus" class="hidden mb-6">
+    <div class="glass-card rounded-2xl p-4">
+     <div class="flex items-center justify-center gap-3">
+      <div id="statusIcon" class="text-2xl"></div><span id="statusText" class="font-semibold"></span>
+     </div>
+    </div>
+   </div><!-- Google Sheets Setup Guide -->
+   <div id="setupGuide" class="hidden mb-6">
+    <div class="glass-card rounded-3xl p-8">
+     <div class="text-center mb-6">
+      <h3 class="text-2xl font-bold section-title mb-2">📋 Panduan Setup Google Sheets</h3>
+      <p class="text-gray-600 font-medium">Ikuti langkah-langkah berikut untuk menghubungkan data anda</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div class="space-y-4">
+       <h4 class="text-lg font-bold text-purple-700 mb-3">🔧 Langkah Setup:</h4>
+       <div class="space-y-3">
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+          1
+         </div>
+         <div>
+          <p class="font-semibold text-gray-800">Buka Google Sheets anda</p>
+          <p class="text-sm text-gray-600">Pastikan data jawatankuasa sudah dimasukkan</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+          2
+         </div>
+         <div>
+          <p class="font-semibold text-gray-800">Klik "Share" atau "Kongsi"</p>
+          <p class="text-sm text-gray-600">Butang di bahagian atas kanan</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+          3
+         </div>
+         <div>
+          <p class="font-semibold text-gray-800">Pilih "Anyone with the link"</p>
+          <p class="text-sm text-gray-600">Ubah dari "Restricted" kepada "Anyone with the link"</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-3">
+         <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+          4
+         </div>
+         <div>
+          <p class="font-semibold text-gray-800">Set permission "Viewer"</p>
+          <p class="text-sm text-gray-600">Pastikan orang lain boleh "View" sahaja</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="space-y-4">
+       <h4 class="text-lg font-bold text-purple-700 mb-3">📊 Format Data:</h4>
+       <div class="bg-gray-50 rounded-2xl p-4">
+        <p class="text-sm font-semibold text-gray-700 mb-2">Susunan kolum yang diperlukan:</p>
+        <div class="space-y-1 text-xs text-gray-600">
+         <p><strong>A:</strong> Masjid</p>
+         <p><strong>B:</strong> Jawatan</p>
+         <p><strong>C:</strong> Nama</p>
+         <p><strong>D:</strong> No. KP</p>
+         <p><strong>E:</strong> No. Telefon</p>
+         <p><strong>F:</strong> Alamat</p>
+         <p><strong>G:</strong> Pekerjaan</p>
+         <p><strong>H:</strong> Umur (optional)</p>
+        </div>
+       </div>
+       <div class="bg-blue-50 rounded-2xl p-4">
+        <p class="text-sm font-semibold text-blue-700 mb-2">💡 Tips:</p>
+        <ul class="text-xs text-blue-600 space-y-1">
+         <li>• Pastikan baris pertama adalah header</li>
+         <li>• Jangan ada baris kosong di tengah data</li>
+         <li>• Format No. KP: 123456-12-1234</li>
+         <li>• Umur akan dikira automatik dari No. KP</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="text-center mt-6"><button id="hideGuideBtn" class="btn-modern btn-secondary text-white px-6 py-3 rounded-2xl font-bold"> <span class="relative z-10">✅ Faham, Sembunyikan Panduan</span> </button>
+     </div>
+    </div>
    </div><!-- Search Section -->
    <div class="glass-card rounded-3xl shadow-2xl p-8 mb-12">
     <div class="text-center mb-8">
@@ -461,7 +546,7 @@
        </div> Cari Nama / No. KP </label> <input type="text" id="searchInput" placeholder="Masukkan nama atau no. KP untuk carian..." class="w-full px-5 py-4 rounded-2xl modern-input font-medium text-gray-700 focus:outline-none">
      </div>
     </div>
-    <div class="flex gap-4 flex-wrap justify-center"><button id="searchBtn" class="btn-modern btn-primary text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3"> <span class="loading-spinner hidden text-xl">⟳</span> <span class="relative z-10">🔍 Cari Maklumat</span> </button> <button id="clearBtn" class="btn-modern btn-secondary text-white px-8 py-4 rounded-2xl font-bold"> <span class="relative z-10">🗑️ Kosongkan</span> </button> <button id="browserPrintBtn" class="btn-modern btn-success text-white px-8 py-4 rounded-2xl font-bold"> <span class="relative z-10">🖨️ Cetak</span> </button> <button id="refreshDataBtn" class="btn-modern btn-accent text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3"> <span class="loading-spinner hidden text-xl">⟳</span> <span class="relative z-10">🔄 Muat Semula</span> </button> <a href="https://padspt.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-modern btn-home text-gray-700 px-8 py-4 rounded-2xl font-bold inline-flex items-center gap-3 no-underline"> <span class="relative z-10">🏠 Halaman Utama</span> </a>
+    <div class="flex gap-4 flex-wrap justify-center"><button id="searchBtn" class="btn-modern btn-primary text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3"> <span class="loading-spinner hidden text-xl">⟳</span> <span class="relative z-10">🔍 Cari Maklumat</span> </button> <button id="clearBtn" class="btn-modern btn-secondary text-white px-8 py-4 rounded-2xl font-bold"> <span class="relative z-10">🗑️ Kosongkan</span> </button> <button id="browserPrintBtn" class="btn-modern btn-success text-white px-8 py-4 rounded-2xl font-bold"> <span class="relative z-10">🖨️ Cetak</span> </button> <button id="refreshDataBtn" class="btn-modern btn-accent text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3"> <span class="loading-spinner hidden text-xl">⟳</span> <span class="relative z-10">🔄 Muat Semula</span> </button> <button id="showGuideBtn" class="btn-modern bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-3 shadow-lg hover:shadow-xl"> <span class="relative z-10">📋 Panduan Setup</span> </button> <a href="https://padspt.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-modern btn-home text-gray-700 px-8 py-4 rounded-2xl font-bold inline-flex items-center gap-3 no-underline"> <span class="relative z-10">🏠 Halaman Utama</span> </a>
     </div>
    </div><!-- Results Section -->
    <div id="resultsSection" class="hidden">
@@ -491,75 +576,208 @@
         let jawatankuasaData = [];
         let dataLoaded = false;
         
-        // Google Sheets CSV URL
-        const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQbaidIqA7QCvVDjYHDTWHn2j5js2IU-Y9AIkq-7HQm1rcvphwRjFV_AUm_wvxaAQ/pub?gid=417717396&single=true&output=csv';
+        // Google Sheets CSV URL - Updated with your specific sheet
+        const GOOGLE_SHEETS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQbaidIqA7QCvVDjYHDTWHn2j5js2IU-Y9AIkq-7HQm1rcvphwRjFV_AUm_wvxaAQ/pub?gid=1361819565&single=true&output=csv';
+        
+        // Alternative URLs with different formats
+        const BACKUP_URLS = [
+            'https://docs.google.com/spreadsheets/d/e/2PACX-1vQbaidIqA7QCvVDjYHDTWHn2j5js2IU-Y9AIkq-7HQm1rcvphwRjFV_AUm_wvxaAQ/pub?output=csv&gid=1361819565',
+            'https://docs.google.com/spreadsheets/d/e/2PACX-1vQbaidIqA7QCvVDjYHDTWHn2j5js2IU-Y9AIkq-7HQm1rcvphwRjFV_AUm_wvxaAQ/pub?output=csv',
+            // Additional backup formats
+            'https://docs.google.com/spreadsheets/d/e/2PACX-1vQbaidIqA7QCvVDjYHDTWHn2j5js2IU-Y9AIkq-7HQm1rcvphwRjFV_AUm_wvxaAQ/pub?gid=1361819565&output=csv',
+            'https://docs.google.com/spreadsheets/d/e/2PACX-1vQbaidIqA7QCvVDjYHDTWHn2j5js2IU-Y9AIkq-7HQm1rcvphwRjFV_AUm_wvxaAQ/export?format=csv&gid=1361819565'
+        ];
 
-        // Function untuk load data dari Google Sheets
+        // Function untuk load data dari Google Sheets dengan multiple attempts
         async function loadDataFromGoogleSheets() {
+            console.log('🔄 Memulakan sambungan ke Google Sheets...');
+            
+            // Try main URL first
+            let success = await tryLoadFromURL(GOOGLE_SHEETS_CSV_URL, 'URL Utama');
+            
+            // If main URL fails, try backup URLs
+            if (!success) {
+                console.log('⚠️ URL utama gagal, mencuba URL backup...');
+                for (let i = 0; i < BACKUP_URLS.length && !success; i++) {
+                    success = await tryLoadFromURL(BACKUP_URLS[i], `URL Backup ${i + 1}`);
+                }
+            }
+            
+            // If all URLs fail, load sample data and show setup guide
+            if (!success) {
+                console.log('❌ Semua URL gagal, menggunakan data sampel...');
+                loadSampleData();
+                showConnectionStatus('Menggunakan data sampel - Klik "Panduan Setup" untuk sambung ke Google Sheets', 'warning');
+                showSetupGuide();
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Function untuk try load dari specific URL dengan enhanced error handling
+        async function tryLoadFromURL(url, urlName) {
             try {
-                const response = await fetch(GOOGLE_SHEETS_CSV_URL);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                console.log(`🌐 Mencuba ${urlName}: ${url}`);
+                
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+                
+                // Try different fetch configurations
+                const fetchConfigs = [
+                    {
+                        signal: controller.signal,
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        headers: {
+                            'Accept': 'text/csv,text/plain,*/*',
+                            'User-Agent': 'Mozilla/5.0 (compatible; DataFetcher/1.0)'
+                        }
+                    },
+                    {
+                        signal: controller.signal,
+                        mode: 'no-cors',
+                        cache: 'no-cache'
+                    },
+                    {
+                        signal: controller.signal,
+                        cache: 'force-cache'
+                    }
+                ];
+                
+                let response = null;
+                let lastError = null;
+                
+                // Try different fetch configurations
+                for (const config of fetchConfigs) {
+                    try {
+                        response = await fetch(url, config);
+                        if (response.ok || response.status === 0) { // status 0 for no-cors
+                            break;
+                        }
+                    } catch (fetchError) {
+                        lastError = fetchError;
+                        console.log(`⚠️ Fetch config failed: ${fetchError.message}`);
+                        continue;
+                    }
+                }
+                
+                clearTimeout(timeoutId);
+                
+                if (!response) {
+                    throw lastError || new Error('All fetch configurations failed');
+                }
+                
+                if (!response.ok && response.status !== 0) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 
                 const csvText = await response.text();
+                console.log(`📄 Data diterima dari ${urlName}, saiz: ${csvText.length} aksara`);
+                
+                if (!csvText || csvText.trim().length === 0) {
+                    throw new Error('Data kosong diterima');
+                }
+                
+                // Check if we got HTML error page instead of CSV
+                if (csvText.trim().startsWith('<!DOCTYPE') || csvText.trim().startsWith('<html')) {
+                    throw new Error('Received HTML page instead of CSV data');
+                }
+                
                 const parsedData = parseCSV(csvText);
+                console.log(`✅ Data berjaya diproses: ${parsedData.length} rekod`);
                 
                 if (parsedData && parsedData.length > 0) {
                     jawatankuasaData = parsedData;
                     dataLoaded = true;
                     populateMasjidDropdown();
                     populateJawatanDropdown();
+                    showConnectionStatus(`Berjaya disambung ke Google Sheets (${parsedData.length} rekod)`, 'success');
                     return true;
                 } else {
-                    throw new Error('Tiada data dijumpai dalam Google Sheets');
+                    throw new Error('Tiada data valid dijumpai selepas parsing');
                 }
                 
             } catch (error) {
-                console.error('Error loading from Google Sheets:', error);
-                loadSampleData();
+                console.error(`❌ Error dengan ${urlName}:`, error.message);
+                
+                if (error.name === 'AbortError') {
+                    console.log(`⏱️ ${urlName} timeout selepas 15 saat`);
+                } else if (error.message.includes('CORS')) {
+                    console.log(`🚫 ${urlName} disekat oleh CORS policy`);
+                } else if (error.message.includes('network')) {
+                    console.log(`🌐 ${urlName} masalah rangkaian`);
+                } else if (error.message.includes('HTML')) {
+                    console.log(`📄 ${urlName} mengembalikan halaman HTML, bukan CSV`);
+                }
+                
                 return false;
             }
         }
 
-        // Function untuk parse CSV data
+        // Function untuk parse CSV data dengan debugging
         function parseCSV(csvText) {
             try {
+                console.log('🔍 Memulakan parsing CSV...');
+                console.log('📄 Sample data (100 aksara pertama):', csvText.substring(0, 100));
+                
                 const lines = csvText.trim().split('\n');
-                if (lines.length < 2) return [];
+                console.log(`📊 Jumlah baris: ${lines.length}`);
+                
+                if (lines.length < 2) {
+                    console.log('❌ CSV terlalu pendek (kurang dari 2 baris)');
+                    return [];
+                }
                 
                 // Get headers from first line
-                const headers = lines[0].split(',').map(header => header.trim().replace(/"/g, ''));
+                const headers = parseCSVLine(lines[0]);
+                console.log('📋 Headers dijumpai:', headers);
                 
                 // Parse data rows
                 const data = [];
                 for (let i = 1; i < lines.length; i++) {
                     const values = parseCSVLine(lines[i]);
-                    if (values.length >= headers.length) {
+                    
+                    // Skip empty lines
+                    if (values.length === 0 || (values.length === 1 && values[0].trim() === '')) {
+                        continue;
+                    }
+                    
+                    if (values.length >= 3) { // At least need masjid, jawatan, nama
                         const row = {};
                         
                         // Map CSV columns to our data structure
-                        // Assuming CSV columns: Masjid, Jawatan, Nama, No KP, No Tel, Alamat, Pekerjaan, Umur
-                        row.masjid = values[0] || '';
-                        row.jawatan = values[1] || '';
-                        row.nama = values[2] || '';
-                        row.kp = values[3] || '';
-                        row.noTel = values[4] || '';
-                        row.alamat = values[5] || '';
-                        row.pekerjaan = values[6] || '';
-                        // Always calculate age from IC number, ignore CSV umur column
-                        row.umur = calculateAgeFromIC(values[3]) || values[7] || '';
+                        // Flexible mapping - handle different column orders
+                        row.masjid = (values[0] || '').trim().replace(/"/g, '');
+                        row.jawatan = (values[1] || '').trim().replace(/"/g, '');
+                        row.nama = (values[2] || '').trim().replace(/"/g, '');
+                        row.kp = (values[3] || '').trim().replace(/"/g, '');
+                        row.noTel = (values[4] || '').trim().replace(/"/g, '');
+                        row.alamat = (values[5] || '').trim().replace(/"/g, '');
+                        row.pekerjaan = (values[6] || '').trim().replace(/"/g, '');
+                        
+                        // Calculate age from IC number, fallback to CSV umur column
+                        const calculatedAge = calculateAgeFromIC(row.kp);
+                        row.umur = calculatedAge || (values[7] || '').trim().replace(/"/g, '') || '';
                         
                         // Only add row if it has essential data
-                        if (row.nama && row.nama.trim() !== '') {
+                        if (row.nama && row.nama !== '') {
                             data.push(row);
+                            
+                            // Log first few records for debugging
+                            if (data.length <= 3) {
+                                console.log(`✅ Rekod ${data.length}:`, row);
+                            }
                         }
+                    } else {
+                        console.log(`⚠️ Baris ${i + 1} tidak lengkap:`, values);
                     }
                 }
                 
+                console.log(`🎉 Parsing selesai: ${data.length} rekod valid`);
                 return data;
             } catch (error) {
-                console.error('Error parsing CSV:', error);
+                console.error('❌ Error parsing CSV:', error);
                 return [];
             }
         }
@@ -773,6 +991,39 @@
             // No popup message
         }
 
+        // Function untuk show connection status
+        function showConnectionStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('connectionStatus');
+            const statusIcon = document.getElementById('statusIcon');
+            const statusText = document.getElementById('statusText');
+            
+            // Show status
+            statusDiv.classList.remove('hidden');
+            statusText.textContent = message;
+            
+            // Set icon and color based on type
+            if (type === 'success') {
+                statusIcon.textContent = '✅';
+                statusText.className = 'font-semibold text-green-700';
+            } else if (type === 'warning') {
+                statusIcon.textContent = '⚠️';
+                statusText.className = 'font-semibold text-orange-700';
+            } else if (type === 'error') {
+                statusIcon.textContent = '❌';
+                statusText.className = 'font-semibold text-red-700';
+            } else {
+                statusIcon.textContent = 'ℹ️';
+                statusText.className = 'font-semibold text-blue-700';
+            }
+            
+            // Auto hide after 5 seconds for success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusDiv.classList.add('hidden');
+                }, 5000);
+            }
+        }
+
         let currentResults = [];
 
         // Search functionality
@@ -780,6 +1031,8 @@
         document.getElementById('clearBtn').addEventListener('click', clearSearch);
         document.getElementById('browserPrintBtn').addEventListener('click', printWithBrowserPrint);
         document.getElementById('refreshDataBtn').addEventListener('click', refreshData);
+        document.getElementById('showGuideBtn').addEventListener('click', showSetupGuide);
+        document.getElementById('hideGuideBtn').addEventListener('click', hideSetupGuide);
 
         // Enter key search
         document.getElementById('searchInput').addEventListener('keypress', (e) => {
@@ -1075,10 +1328,36 @@
 
 
 
+        // Function untuk show setup guide
+        function showSetupGuide() {
+            document.getElementById('setupGuide').classList.remove('hidden');
+            // Scroll to guide
+            document.getElementById('setupGuide').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        // Function untuk hide setup guide
+        function hideSetupGuide() {
+            document.getElementById('setupGuide').classList.add('hidden');
+        }
+
         // Initialize - Load data on page load
         document.addEventListener('DOMContentLoaded', async () => {
-            await loadDataFromGoogleSheets();
+            // Show loading status
+            showConnectionStatus('Menyambung ke Google Sheets...', 'info');
+            
+            // Load data
+            const success = await loadDataFromGoogleSheets();
+            
+            if (!success) {
+                // Keep showing warning status for failed connection
+                setTimeout(() => {
+                    showConnectionStatus('Menggunakan data sampel - Klik "Panduan Setup" untuk sambung ke Google Sheets', 'warning');
+                }, 1000);
+            }
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'993f059e47530c6d',t:'MTc2MTM2NzA4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99fc1e0137c25e23',t:'MTc2MzM0OTg4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
